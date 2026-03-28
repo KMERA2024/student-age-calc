@@ -1,8 +1,8 @@
 {
-  "id": "/student-age-calc/",
+  "id": "com.khaled.agecalculator.1448",
   "name": "حاسبة أعمار الطلاب",
   "short_name": "حاسبة الأعمار",
-  "description": "تطبيق متخصص لحساب أعمار الطلاب بدقة عند بداية العام الدراسي 1448 هـ",
+  "description": "تطبيق مخصص لحساب أعمار الطلاب بدقة عند بداية العام الدراسي 1448 هـ",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -24,11 +24,11 @@
   ],
   "screenshots": [
     {
-      "src": "https://via.placeholder.com/1080x1920?text=Student+Age+Calculator",
+      "src": "https://via.placeholder.com/1080x1920.png?text=حاسبة+الأعمار",
       "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "واجهة التطبيق على الجوال"
+      "label": "واجهة التطبيق"
     }
   ]
 }

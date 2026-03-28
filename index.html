@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة أعمار الطلاب</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root { --primary: #007BFF; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
+        h2 { color: var(--primary); margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; transition: 0.3s; }
+        button:hover { background: #0056b3; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e7f3ff; color: #0056b3; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>حاسبة أعمار الطلاب</h2>
+    <p>تاريخ بداية العام الدراسي 1448 هـ</p>
+    <input type="date" id="birthDate" placeholder="اختر تاريخ الميلاد">
+    <button onclick="calculateAge()">احسب عمر الطالب</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateAge() {
+        const birthDate = new Array(document.getElementById('birthDate').value);
+        if (!birthDate[0]) { alert("الرجاء اختيار تاريخ الميلاد"); return; }
+        
+        const targetDate = new Date('2026-08-30'); // تاريخ تقريبي لبداية عام 1448هـ
+        const birth = new Date(birthDate);
+        
+        let years = targetDate.getFullYear() - birth.getFullYear();
+        let months = targetDate.getMonth() - birth.getMonth();
+        
+        if (months < 0 || (months === 0 && targetDate.getDate() < birth.getDate())) {
+            years--;
+            months += 12;
+        }
+        
+        const resDiv = document.getElementById('result');
+        resDiv.style.display = 'block';
+        resDiv.innerHTML = `عمر الطالب عند بداية الدراسة:<br>${years} سنة و ${months} شهر`;
+    }
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+</script>
+</body>
+</html>
